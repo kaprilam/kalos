@@ -147,3 +147,22 @@ $( document ).ready( function () {
       }, 0000 );
   })();
 });
+
+$(document).ready(function(){
+  var kalos = document.getElementById('kalos');
+kalos.addEventListener('drop', drop, false);
+
+
+function drop(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    var imageUrl = evt.dataTransfer.getData('text/html');
+    if($(imageUrl).children().length > 0 ){
+        var url = $(imageUrl).find('img').attr('src');
+    }else{
+        var url = $(imageUrl).attr('src');
+    }
+    $('.image').css('background-image', 'url("' + url + '")');
+    //alert(url);
+}
+});
